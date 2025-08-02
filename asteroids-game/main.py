@@ -27,8 +27,15 @@ def main():
 
         screen.fill("black")
         updatable.update(dt)
+
         for sprite in drawable:
             sprite.draw(screen)
+
+        for asteroid in asteroids:
+            if asteroid.check_collision(player):
+                print("Game over!")
+                running = False
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000
         player.update(dt)
